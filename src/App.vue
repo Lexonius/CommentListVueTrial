@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     addCommentHandler(comment) {
-      this.addedComments.push(comment);
+      this.$store.state.addedComments.push(comment);
     },
 
     removeCommentHandler(id) {

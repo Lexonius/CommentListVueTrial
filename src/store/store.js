@@ -9,7 +9,9 @@ export const store = () => new Vuex.Store({
   },
   actions: {},
   mutations: {
-    
+    addCommentHandler(comment) {
+      this.$store.state.addedComments.push(comment);
+    },
   },
   getters: {
     // addedComments: state =>{
