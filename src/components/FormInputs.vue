@@ -1,6 +1,6 @@
 <template>
   <div class ="appBlock_left__elem_top">
-    <input class="appBlock_left__input" ref='nameInput' v-model="name" placeholder="Ваше имя">
+    <input class="appBlock_left__input" v-model="name" placeholder="Ваше имя">
     <input class ="appBlock_left__input" v-model="commentText" placeholder="Комментарий">
     <!-- по клику запускается addComment из methods -->
     <button @click="addComment" class="button">Add comment</button>
@@ -21,9 +21,6 @@ export default {
       //наше пользовательское событие onInputData, по которому создается объект
       if (!this.name || !this.commentText) {
         // this.vm.$refs.nameInput;
-        console.log(this.$refs.nameInput.style);
-        
-        
         return;
       } else {
         this.$emit("onInputData", {
@@ -38,11 +35,11 @@ export default {
             minutes: now.getMinutes()
           },
           id: Date.now(),
-          remove: ""
         });
         this.name = "";
         this.commentText = "";
       }
+      
     }
   }
 };

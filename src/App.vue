@@ -29,10 +29,10 @@ export default {
   },
   data() {
     return {
-      //массив с добавленными комментариями
-      addedComments: [],
-      //массив с удаленными комментариями
-      removedComments: []
+      // //массив с добавленными комментариями
+      // addedComments: [],
+      // //массив с удаленными комментариями
+      // removedComments: []
     };
   },
   methods: {
