@@ -3,10 +3,9 @@
       <ul v-if="addedComments.length" class ="appBlock__list">
         <added-comment v-for="item in addedComments" 
           :key="item.id" :comment="item"
-          @onRemoveComment="removeComment"
-          :added-comments="addedComments"/>
+          />
       </ul>
-      <div v-else>Комментарии отсутствуют</div>
+      <div v-else class="text placeholder">Комментарии отсутствуют</div>
   </div>
 </template>
 
@@ -15,13 +14,13 @@ import AddedComment from "./AddedComment.vue";
 
 export default {
   name: "addedComments",
-  props: ["added-comments"],
   components: {
     AddedComment
   },
-  methods: {
-    removeComment(id) {
-      this.$emit("removeCommentHandler", id);
+
+  computed: {
+    addedComments: function() {
+      return this.$store.state.addedComments;
     }
   }
 };
@@ -35,5 +34,10 @@ export default {
   height: 630px;
   margin-bottom: 1%;
   overflow: auto;
+}
+
+.placeholder {
+  text-align: center;
+  padding-top: 1%;
 }
 </style>

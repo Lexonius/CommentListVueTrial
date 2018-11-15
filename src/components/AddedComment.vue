@@ -3,10 +3,10 @@
       <img src="../assets/usuario.jpeg" class ="avatar__img"> 
     <div class ="list__item_center">
       <div class ="list__item_center_top">
-        <div >
+        <div class="text">
           {{ comment.name }}
         </div>
-          <div>
+          <div class="text">
             {{ comment.date.weekDay }}.
             {{ comment.date.month }}.
             {{ comment.date.year }}
@@ -14,7 +14,7 @@
             {{ comment.date.minutes }}
           </div>
       </div>
-      <div class="list__item_center_bottom">
+      <div class="list__item_center_bottom text">
         {{ comment.comment }}
       </div>
     </div>
@@ -27,10 +27,10 @@
 <script>
 export default {
   name: "AddedComment",
-  props: ["comment", "added-comments"],
+  props: ["comment"],
   methods: {
     removeComment(commentId) {
-      this.$emit("onRemoveComment", commentId);
+      this.$store.commit("removeComment", commentId);
     }
   }
 };
@@ -40,5 +40,10 @@ export default {
 <style>
 .avatar__img {
   width: 100px;
+}
+
+.text {
+  font-family: Arial, Helvetica, sans-serif;
+  color: gray;
 }
 </style>

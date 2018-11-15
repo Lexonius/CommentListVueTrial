@@ -1,13 +1,11 @@
 <template>
-    <div class ="appBlock_left__elem_bottom">
+    <div class ="appBlock_left__elem_bottom" v-bind:class="{ 'block-danger': this.$store.state.hasError}">
         <ul v-if="removedComments.length" class ="appBlock__list">
             <removed-comment v-for="elem in removedComments" 
             :key="elem.id" :removeComment="elem"
-            @onAddReversesComment="addReverseComment"
-            :removed-comments='removedComments'
             />
         </ul>
-    <div v-else>Изменений нет</div>
+    <div v-else class="text placeholder">Изменений нет</div>
     </div>
 </template>
 
@@ -16,13 +14,13 @@ import RemovedComment from "./RemovedComment.vue";
 
 export default {
   name: "RemovedComments",
-  props: ["removed-comments"],
   components: {
     RemovedComment
   },
-  methods: {
-    addReverseComment(id) {
-      this.$emit("addReverseCommentHandler", id);
+  methods: {},
+  computed: {
+    removedComments: function() {
+      return this.$store.state.removedComments;
     }
   }
 };
@@ -42,6 +40,14 @@ export default {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.block-danger {
+  border: 3px solid rgb(107, 203, 182);
+  margin-top: 2%;
+  height: 435px;
+  border-radius: 5px;
+  overflow: auto;
 }
 
 ::-webkit-scrollbar {

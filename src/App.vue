@@ -3,13 +3,13 @@
     <div class="wrapper">
       <div class="appBlock appBlock_left">
         <!-- кастомное событие на инпуты -->
-        <form-inputs @onInputData="addCommentHandler" />
-        <removed-comments :removed-comments="removedComments" @addReverseCommentHandler="addReverseCommentHandler"/>
+        <form-inputs/>
+        <removed-comments/>
       </div>
       <div class="appBlock appBlock_rigth">
         <!-- прокидываем в наш компонент added-comments наш массив addedComments -->
-        <added-comments :added-comments="addedComments" @removeCommentHandler="removeCommentHandler"/>
-        <button @click="saveComment" class="button">save comment</button>
+        <added-comments/>
+        <button @click="saveComment" class="button">Save comments</button>
       </div>      
     </div>
   </div>
@@ -28,55 +28,11 @@ export default {
     "removed-comments": RemovedComments
   },
   data() {
-    return {
-      // //массив с добавленными комментариями
-      // addedComments: [],
-      // //массив с удаленными комментариями
-      // removedComments: []
-    };
+    return {};
   },
   methods: {
-    addCommentHandler(comment) {
-      this.$store.state.addedComments.push(comment);
-    },
-
-    removeCommentHandler(id) {
-      const nowRemove = new Date();
-      const commentIndex = this.addedComments.findIndex(
-        a => a.id === Number(id)
-      );
-      let removeComment = this.addedComments.splice(commentIndex, 1);
-      this.removedComments.push(removeComment[0]);
-    },
-
-    addReverseCommentHandler(id) {
-      const nowRemove = new Date();
-      const commentIndex = this.removedComments.findIndex(
-        a => a.id === Number(id)
-      );
-      let addReverseComment = this.removedComments.splice(commentIndex, 1);
-      this.addedComments.push(addReverseComment[0]);
-    },
-
     saveComment() {
-      localStorage.setItem(
-        "store",
-        JSON.stringify({
-          commList: this.addedComments,
-          commRemovedList: this.removedComments
-        })
-      );
-      alert("OK");
-    }
-  },
-  
-  created() {
-    if (localStorage.getItem("store")) {
-      let commentParse = JSON.parse(localStorage.getItem("store"));
-      this.addedComments = commentParse.commList;
-      this.removedComments = commentParse.commRemovedList;
-      console.log();
-      
+      this.$store.commit("saveComment");
     }
   }
 };

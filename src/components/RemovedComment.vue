@@ -1,7 +1,7 @@
 <template>
 <li class ="list__item">
     <div class ="list__item_center">
-      <div class ="list__item_center_top">
+      <div class ="list__item_center_top text">
         <div>
           {{ removeComment.name }}
         </div>
@@ -13,7 +13,7 @@
             {{ removeComment.date.minutes }}
           </div>
       </div>
-      <div class="list__item_center_bottom">
+      <div class="list__item_center_bottom text">
         {{ removeComment.comment }}
       </div>
     </div>
@@ -26,11 +26,10 @@
 <script>
 export default {
   name: "RemovedComment",
-  props: ["removeComment", "removed-comments"],
+  props: ["removeComment"],
   methods: {
     addReverseComment(removeCommentId) {
-
-      this.$emit("onAddReversesComment", removeCommentId);
+      this.$store.commit("addReverseComment", removeCommentId);
     }
   }
 };
@@ -69,5 +68,4 @@ export default {
   border-bottom-width: 2px;
   border-bottom-color: #6bcbb6;
 }
-
 </style>
