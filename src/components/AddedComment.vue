@@ -45,5 +45,6 @@ export default {
 .text {
   font-family: Arial, Helvetica, sans-serif;
   color: gray;
+  font-size: 80%;
 }
 </style>

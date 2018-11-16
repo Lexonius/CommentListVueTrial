@@ -31,9 +31,9 @@ export default {
 .appBlock_right__wrap {
   border: 3px solid #6bcbb6;
   border-radius: 5px;
-  height: 630px;
   margin-bottom: 1%;
   overflow: auto;
+  height: 93%;
 }
 
 .placeholder {

@@ -61,11 +61,11 @@ export default {
 
 .list__item {
   display: flex;
-  height: 100px;
   justify-content: space-between;
   padding: 1%;
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #6bcbb6;
+  height: 15%;
 }
 </style>

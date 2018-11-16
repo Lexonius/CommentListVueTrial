@@ -10,12 +10,12 @@
       @keydown="removeColorCommentInput">
     <!-- по клику запускается addComment из methods -->
     <button @click="addComment" class="button button__text">Add comment</button>
-    <div v-if="errors.length" class="appBlock_left__elem_error text">
+    <div v-if="hasErrorName || hasErrorComment" class="appBlock_left__elem_error text">
         <p class="title_error"> Необходимо заполнить поля:</p>
         <ul class="list_error">
-          <li v-for="elem in errors"> {{elem}} </li>
+          <li v-if="hasErrorName">Ваше имя</li>
+          <li v-if="hasErrorComment">Комментарий</li>
         </ul>
-        
     </div>
   </div>
 </template>
@@ -32,7 +32,7 @@ export default {
     };
   },
   methods: {
-    addComment(e) {
+    addComment() {
       const now = new Date();
       //наше пользовательское событие onInputData, по которому создается объект
       if (this.name && this.commentText) {
@@ -60,23 +60,32 @@ export default {
       this.errors = [];
 
       if (!this.name) {
-        this.errors.push("Ваше имя.");
         this.hasErrorName = true;
         this.$store.state.hasError = true;
       }
 
       if (!this.commentText) {
-        this.errors.push("Ваш комментарий.");
         this.hasErrorComment = true;
         this.$store.state.hasError = true;
       }
+      
     },
+
+
     removeColorNameInput() {
-      this.hasErrorName = false;
+      this.hasErrorName = false;  
+      console.log(this.errors);
     },
+
     removeColorCommentInput() {
       this.hasErrorComment = false;
-    }
+      this.$store.state.hasError = false; 
+      console.log(this.errors)
+        // if(this.hasErrorName = false){
+        //   this.$store.state.hasError = true; 
+        // }
+    },
+
   }
 };
 </script>
@@ -130,6 +139,7 @@ export default {
 .button__text {
   font-family: Arial, Helvetica, sans-serif;
   color: white;
+  font-size: 80%;
 }
 
 .appBlock_left__elem_error {
@@ -138,12 +148,13 @@ export default {
   margin-top: 2%;
 }
 
-.list_error{
+.list_error {
   list-style: none;
+  margin: 0;
 }
 
-.title_error{
+.title_error {
   text-align: center;
-
+  margin: 0;
 }
 </style>

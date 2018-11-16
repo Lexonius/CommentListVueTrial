@@ -1,5 +1,6 @@
 <template>
-    <div class ="appBlock_left__elem_bottom" v-bind:class="{ 'block-danger': this.$store.state.hasError}">
+    <div class ="appBlock_left__elem_bottom" 
+    v-bind:class="{ 'block-danger': this.$store.state.hasError}">
         <ul v-if="removedComments.length" class ="appBlock__list">
             <removed-comment v-for="elem in removedComments" 
             :key="elem.id" :removeComment="elem"
@@ -31,21 +32,21 @@ export default {
 .appBlock_left__elem_bottom {
   border: 3px solid rgb(107, 203, 182);
   margin-top: 2%;
-  height: 545px;
   border-radius: 5px;
   overflow: auto;
+  height: 100%;
 }
 
 .appBlock__list {
   list-style: none;
   margin: 0;
   padding: 0;
+  height: 110%;
 }
 
 .block-danger {
   border: 3px solid rgb(107, 203, 182);
   margin-top: 2%;
-  height: 435px;
   border-radius: 5px;
   overflow: auto;
 }
