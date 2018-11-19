@@ -20,6 +20,8 @@
     <div class ="list__item_right">
       <img src="../assets/add.png" @click="addReverseComment(removeComment.id)" class ="list__item_button">
     </div>
+    <!-- <div v-bind:class="{ 'list__item__line_bottom': this.$store.state.bottomLine}">  -->
+    <!-- </div>  -->
 </li>    
 </template>
 
@@ -31,7 +33,7 @@ export default {
     addReverseComment(removeCommentId) {
       this.$store.commit("addReverseComment", removeCommentId);
     }
-  }
+  },
 };
 </script>
 
@@ -63,9 +65,9 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 1%;
+  height: 15%;
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #6bcbb6;
-  height: 15%;
 }
 </style>

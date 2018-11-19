@@ -6,7 +6,8 @@ export const store = new Vuex.Store({
   state: {
     addedComments: [],
     removedComments: [],
-    hasError: false
+    hasError: false,
+    // bottomLine: true 
   },
 
   actions: {},
@@ -37,6 +38,7 @@ export const store = new Vuex.Store({
       let removeComment = state.addedComments.splice(commentIndex, 1);
       state.removedComments.push(removeComment[0]);
     },
+
     addReverseComment(state, id) {
       const commentIndex = state.removedComments.findIndex(
         a => a.id === Number(id)
@@ -47,8 +49,8 @@ export const store = new Vuex.Store({
 
     saveComment(state) {
       localStorage.setItem("store", JSON.stringify(state));
-      alert("OK!")
-    }
+      alert("save successfully!")
+    },
   },
 
   getters: {},

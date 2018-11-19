@@ -21,6 +21,7 @@
     <div class ="list__item_right">
       <img src="../assets/remove.png" @click="removeComment(comment.id)" class ="list__item_button">
     </div>
+    <div v-bind:class="{ 'list__item__line_bottom': this.$store.state.bottomLine}"></div>
   </li>
 </template>
 

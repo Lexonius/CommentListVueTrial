@@ -44,19 +44,22 @@ export default {
     justify-content: center;
     margin-top: 7%;
 }
+
 .wrapper {
   display: flex;
   width: 80%;
   height: 750px;
-  /* align-items: center; */
 }
+
 .appBlock_left {
   width: 25%;
   display: flex;
   flex-direction: column;
 }
+
 .appBlock_rigth {
   width: 75%;
   margin-left: 1%;
 }
+
 </style>

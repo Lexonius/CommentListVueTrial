@@ -41,7 +41,7 @@ export default {
   list-style: none;
   margin: 0;
   padding: 0;
-  height: 110%;
+  height: 100%;
 }
 
 .block-danger {
@@ -59,5 +59,9 @@ export default {
   border-width: 1px 1px 1px 2px;
   border-color: #6bcbb6;
   background-color: #6bcbb6;
+}
+
+.appBlock__list :last-child {
+  border-bottom-style: none;
 }
 </style>
